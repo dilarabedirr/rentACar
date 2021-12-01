@@ -3,9 +3,10 @@ package com.etiya.rentACar.core.utilities.cloudinary;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
+
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
@@ -14,6 +15,7 @@ import com.etiya.rentACar.core.utilities.results.DataResult;
 import com.etiya.rentACar.core.utilities.results.ErrorDataResult;
 import com.etiya.rentACar.core.utilities.results.SuccessDataResult;
 
+@Service
 public class CloudinaryManager implements CloudinaryService {
 	private final Cloudinary cloudinary;
 

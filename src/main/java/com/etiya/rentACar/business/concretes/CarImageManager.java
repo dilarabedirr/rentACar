@@ -18,12 +18,14 @@ public class CarImageManager implements CarImageService {
 
 	private CarImageDao carImageDao;
 	private CloudinaryService cloudinaryService;
+	private CarService carService;
 
 	@Autowired
-	public CarImageManager(CarImageDao carImageDao, CloudinaryService cloudinaryService) {
+	public CarImageManager(CarImageDao carImageDao, CloudinaryService cloudinaryService,CarService carService) {
 		super();
 		this.carImageDao = carImageDao;
 		this.cloudinaryService = cloudinaryService;
+		this.carService=carService;
 	}
 
 	@Override
@@ -32,12 +34,13 @@ public class CarImageManager implements CarImageService {
 		if (!result.isSuccess()) {
 			return new ErrorResult(result.getMessage());
 		}
+		var car=this.carService.getById(carId).getData();
 		CarImage carImage = new CarImage();
 		carImage.setImagePath(result.getData().get("url"));
-		// carImage.setCarImageId(result.getData().get("carImage_id"));
+		carImage.setCar(car);
 		carImage.setCarImageDate(result.getData().get("created_at"));
 		this.carImageDao.save(carImage);
-		return new SuccessResult("photo added");
+		return new SuccessResult("car image added");
 	}
 
 }
