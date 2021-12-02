@@ -12,7 +12,7 @@ import com.etiya.rentACar.business.abstracts.CarImageService;
 import com.etiya.rentACar.core.utilities.results.Result;
 
 @RestController
-@RequestMapping("images")
+@RequestMapping("api/images")
 public class CarImagesController {
 	private CarImageService carImageService;
 
@@ -22,7 +22,7 @@ public class CarImagesController {
 		this.carImageService = carImageService;
 	}
 
-	@PostMapping("/add")
+	@PostMapping("add")
 	public Result add(@RequestBody MultipartFile carImage, @RequestParam("carId") int carId) {
 		return this.carImageService.add(carImage, carId);
 	}

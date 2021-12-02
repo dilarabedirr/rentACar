@@ -22,12 +22,14 @@ public class CarImage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "carImageId")
 	private int carImageId;
-	@Column(name = "imagePath")//photourl
+	
+	@Column(name = "imagePath")
 	private String imagePath;
+	
 	@Column(name = "carImageDate")
 	private String carImageDate;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "CarId")
 	private Car car;
-}//cascade = CascadeType.DETACH
+}// cascade = CascadeType.DETACH
